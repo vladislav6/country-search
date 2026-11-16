@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "lint": "eslint . --fix",
     "format": "prettier . --write",
@@ -32,6 +33,7 @@
     "globals": "^17.14.0",
     "husky": "^9.1.7",
     "jiti": "^2.7.0",
+    "jsdom": "^29.1.1",
     "lint-staged": "^16.4.0",
     "prettier": "^3.10.0",
     "typescript": "^6.0.3",

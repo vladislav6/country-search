@@ -2,31 +2,31 @@ import { describe, it, expect, vi, afterEach } from 'vitest';
 import searchCountries from '../core/searchCountries';
 import type { countries } from '../type/types';
 
+export const mockCountries: countries[] = [
+  {
+    name: 'Poland',
+    capital: 'Warsaw',
+    region: 'Europe',
+    subregion: 'Central Europe',
+    population: 37950802,
+    languages: [{ name: 'Polish' }],
+    flags: { png: 'https://flagcdn.com/w320/pl.png' },
+  },
+  {
+    name: 'China',
+    flags: { png: 'https://flagcdn.com/w320/cn.png' },
+    region: 'Asia',
+    capital: 'Beijing',
+    languages: [{ name: 'Chinese' }],
+    subregion: 'Eastern Asia',
+    population: 1402112000,
+  },
+];
+
 describe('searchCountries', () => {
   afterEach(() => {
     vi.restoreAllMocks();
   });
-
-  const mockCountries: countries[] = [
-    {
-      name: 'Poland',
-      capital: 'Warsaw',
-      region: 'Europe',
-      subregion: 'Central Europe',
-      population: 37950802,
-      languages: [{ name: 'Polish' }],
-      flags: { png: 'https://flagcdn.com/w320/pl.png' },
-    },
-    {
-      name: 'China',
-      flags: { png: 'https://flagcdn.com/w320/cn.png' },
-      region: 'Asia',
-      capital: 'Beijing',
-      languages: [{ name: 'Chinese' }],
-      subregion: 'Eastern Asia',
-      population: 1402112000,
-    },
-  ];
 
   it('should return an array of countries', async () => {
     const fetchSpy = vi.spyOn(globalThis, 'fetch');
@@ -78,12 +78,12 @@ describe('searchCountries', () => {
   it('should throw an error when response is not ok', async () => {
     vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce({
       ok: false,
-      status: 404,
+      status: 500,
     } as Response);
 
     const controller = new AbortController();
 
-    await expect(searchCountries('Unknown', controller.signal)).rejects.toThrow('HTTP error: 404');
+    await expect(searchCountries('Unknown', controller.signal)).rejects.toThrow('HTTP Error 500');
   });
 
   it('should reject when fetch fails', async () => {

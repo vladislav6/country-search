@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Country search</title>
+    <script type="module" src="./dist/index.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .input-holder {
+        max-width: 500px;
+      }
+      .input-holder input {
+        width: 100%;
+        padding: 10px 20px;
+      }
+      .country {
+        display: flex;
+        max-width: 500px;
+        gap: 20px;
+        padding: 20px 0;
+        border-bottom: 1px solid rgb(96, 92, 92);
+        cursor: pointer;
+      }
+      .country div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+      .country p {
+        margin: 0;
+        padding: 5px 0;
+        border-bottom: 1px solid rgb(191, 190, 190);
+      }
+      .country:hover {
+        background-color: rgb(233, 231, 231);
+      }
+      .card {
+        max-width: 500px;
+      }
+      .card img {
+        width: 100%;
+      }
+      .card p {
+        border-bottom: 1px solid silver;
+      }
+      .overlay-preload {
+        position: fixed;
+        z-index: 1000;
+        opacity: 1;
+        visibility: visible;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .preloader {
+        width: 50px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        border: 8px solid;
+        border-color: #fff #0000;
+        animation: l1 1s infinite;
+      }
+      @keyframes l1 {
+        to {
+          transform: rotate(0.5turn);
+        }
+      }
+    </style>
+  </head>
+  <body></body>
+</html>
